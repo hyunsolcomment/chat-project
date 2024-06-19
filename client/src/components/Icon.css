@@ -1,0 +1,53 @@
+.icon {
+    position: relative;
+    
+    --height: 37px;
+
+    width: var(--height);
+    height: var(--height);
+    min-width: var(--height);
+    min-height: var(--height);
+    max-width: var(--height);
+    max-height: var(--height);
+
+    .image {
+        background: linear-gradient(32deg, lightgray, rgb(199, 199, 199));
+        width: 100%;
+        height: 100%;
+        border-radius: 100px;
+        border: 1px solid white;
+    }
+
+    .status {
+
+        --SIZE: 11px;
+
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: 10;
+        border: 1px solid white;
+        width: var(--SIZE);
+        height: var(--SIZE);
+        border-radius: var(--SIZE);
+
+        background: black;
+    }
+
+    .status[data-status="ONLINE"] {
+        background: lime;
+    }
+
+    .status[data-status="OFFLINE"] {
+        background: gray;
+    }
+
+    .status[data-status='BUSY'] {
+        background: red;
+    }
+
+    .status[data-status="NO_HERE"] {
+        background: orange;
+    }
+
+}

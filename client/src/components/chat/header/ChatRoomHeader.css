@@ -1,0 +1,36 @@
+.chat>header {
+    position: relative;
+
+    border: 1px solid rgb(220, 220, 220);
+    border-radius: 5px;
+    padding: 20px;
+    height: 80px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+
+    background: var(--main-gray);
+
+    >.text {
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+
+        .name {
+            font-size: 17px;
+        }
+
+        .right {
+            height: 15px;
+        }
+
+        .desc {
+            font-size: 17px;
+            color: gray;
+        }
+    }
+}
