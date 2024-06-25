@@ -1,5 +1,5 @@
-import { IFriend } from "../@types/friend";
-import { StatusType } from "../@types/status";
+import { IFriend } from "../types/friend";
+import { StatusType } from "../types/status";
 import './Icon.css';
 
 interface IProps {

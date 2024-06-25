@@ -1,4 +1,4 @@
-import { IFriend } from "../@types/friend";
+import { IFriend } from "../types/friend";
 import { friendSlice } from "../store/friend";
 import { RootState, store } from "../store/store";
 

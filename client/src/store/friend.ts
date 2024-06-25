@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { IBlockedFriend, IFriend, IRequestFriend } from "../@types/friend";
-import { StatusType } from "../@types/status";
+import { IBlockedFriend, IFriend, IRequestFriend } from "../types/friend";
+import { StatusType } from "../types/status";
 
 interface init {
     friendList: IFriend[]

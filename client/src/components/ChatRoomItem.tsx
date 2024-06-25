@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { IChatRoom } from "../@types/chat";
+import { IChatRoom } from "../types/chat";
 import { Chat } from "../modules/chat";
 import { Friend } from "../modules/friend";
 import Icon from "./Icon";

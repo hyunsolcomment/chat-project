@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { StatusType } from "../@types/status";
+import { StatusType } from "../types/status";
 
 interface init {
     id: string

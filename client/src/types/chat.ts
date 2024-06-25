@@ -21,7 +21,10 @@ export interface IChatHistory {
     date: Date
 
     /** 채팅 마지막 수정일 */
-    lastEditDate?: Date | undefined
+    lastEditDate?: Date | undefined,
+
+    /** 채팅 고유 아이디 */
+    uuid: string
 }
 
 export interface IChatRoom {
@@ -37,4 +40,6 @@ export interface IChatRoom {
 
     /** 채팅방 설명 */
     desc?: string | undefined
+
+    users: string[]
 }

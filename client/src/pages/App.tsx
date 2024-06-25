@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 import ChatRoom from "../components/chat/ChatRoom";
 import { useSelector } from "react-redux";
 import { Chat } from "../modules/chat";
-import ChatRoomUserList from "../components/chat/user-list/ChatRoomUserList";
 
 enum State {
     IDLE,
@@ -44,10 +43,6 @@ export default function App() {
             </div>
 
             <div className="right">
-                {
-                    state === State.CHAT &&
-                    <ChatRoomUserList />
-                }
             </div>
         </div>
     )

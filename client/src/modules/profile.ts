@@ -1,4 +1,4 @@
-import { StatusType } from "../@types/status";
+import { StatusType } from "../types/status";
 import { profileSlice, profileSliceInit } from "../store/profile";
 import { RootState, store } from "../store/store";
 
@@ -21,5 +21,9 @@ export class Profile {
     
     static setStatusType(status: StatusType) {
         store.dispatch(profileSlice.actions.setStatusType(status));
+    }
+
+    static getProfile() {
+        return store.getState().profile;
     }
 }

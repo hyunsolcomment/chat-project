@@ -2,6 +2,8 @@
     position: relative;
 
     height: 200px;
+    min-height: 200px;
+    max-height: 200px;
     width: 100%;
 
     display: flex;
@@ -20,7 +22,7 @@
     }
 
     .send-btn {
-
+        cursor: pointer;
         width: 50px;
         padding: 13px;
         outline: 0;
@@ -28,8 +30,19 @@
         border-radius: 5px;
         background: var(--main-gray);
         border: 1px solid rgb(220, 220, 220);
+
+        transition: all 0.35s ease;
+
         img {
             width: 100%;
         }
+    }
+
+    .send-btn:hover {
+        background: rgb(231, 231, 231);
+    }
+
+    .send-btn:active {
+        transform: scale(0.97);
     }
 }

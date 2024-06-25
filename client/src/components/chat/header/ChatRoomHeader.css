@@ -5,6 +5,8 @@
     border-radius: 5px;
     padding: 20px;
     height: 80px;
+    min-height: 80px;
+    max-height: 80px;
 
     display: flex;
     flex-direction: row;
@@ -12,25 +14,79 @@
     gap: 10px;
 
     background: var(--main-gray);
+    
+    >.user-list {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        >div:not(:first-child) {
+            margin-left: -15px;
+        }
+    }
+
+    >.menu {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        padding: 15px;
+        padding-right: 5px;
+        >img {
+            height: 20px;
+        }    
+    }
 
     >.text {
-
+        width: 100%;
         display: flex;
         flex-direction: row;
         align-items: center;
         gap: 10px;
+        height: 60px;
+        overflow: hidden;
+
+        --MARGIN-TOP: 55px;
+
+        * {
+            opacity: 0;
+            margin-top: var(--MARGIN-TOP);
+        }
 
         .name {
             font-size: 17px;
+            animation: header-text-intro 0.4s ease-out forwards;
         }
 
         .right {
             height: 15px;
+            animation: header-text-intro 0.4s 0.03s ease-out forwards;
         }
 
         .desc {
             font-size: 17px;
             color: gray;
+            animation: header-text-intro 0.4s 0.08s ease-out forwards;
         }
+    }
+}
+
+@keyframes header-text-intro {
+    0% {
+        margin-top: var(--MARGIN-TOP);
+        opacity: 0;
+    }
+
+    50% {
+        margin-top: -10px;
+    }
+
+    85% {
+        opacity: 1;
+    }
+
+    100% {
+        margin-top: 0;
+        opacity: 1;
     }
 }

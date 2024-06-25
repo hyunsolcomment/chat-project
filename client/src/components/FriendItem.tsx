@@ -1,4 +1,4 @@
-import { IFriend } from "../@types/friend";
+import { IFriend } from "../types/friend";
 import Icon from "./Icon";
 
 export default function FriendItem({friend}: {friend: IFriend}) {

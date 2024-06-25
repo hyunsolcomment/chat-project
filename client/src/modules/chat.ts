@@ -1,6 +1,7 @@
-import { IChatRoom } from "../@types/chat";
+import { ChatType, IChatHistory, IChatRoom } from "../types/chat";
 import { chatSlice, chatSliceInit } from "../store/chat";
 import { RootState, store } from "../store/store";
+import uuidv4 from "../util/uuid";
 
 export class Chat {
     static get() {
@@ -72,4 +73,27 @@ export class Chat {
 
         return false;
     }
+
+    static createChatHistory({authorId, type, content}: {authorId: string, type?: ChatType, content: string}): IChatHistory {
+        type = type ?? ChatType.TEXT
+
+        return {
+            authorId, type, content,
+            date: new Date(),
+            uuid: uuidv4()
+        }
+    }
+
+    static addChat(chat: IChatHistory) {
+        store.dispatch(chatSlice.actions.addChat(chat));
+    }
+
+    static editChat(chat: IChatHistory) {
+        store.dispatch(chatSlice.actions.editChat(chat));
+    }
+
+    static removeChat(chat: IChatHistory | string) {
+        store.dispatch(chatSlice.actions.removeChat(typeof chat === 'string' ? chat : chat.uuid));
+    }
+
 }

@@ -1,5 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { ChatType, IChatHistory, IChatRoom } from "../@types/chat";
+import { ChatType, IChatHistory, IChatRoom } from "../types/chat";
+import { Chat } from "../modules/chat";
 
 interface init {
 
@@ -28,41 +29,59 @@ interface init {
 export const chatSliceInit: init = {
     chatRoomId: "20",
     chatHistory: [
-        { authorId: "leechaeyoon1212", type: ChatType.TEXT, content: "안녕", date: new Date() },
-        { authorId: "kwon._.gaon1201", type: ChatType.TEXT, content: "다들 반가워", date: new Date() },
-        { authorId: "kwon._.gaon1201", type: ChatType.TEXT, content: "다들 반가워22", date: new Date() },
-        { authorId: "kwon._.gaon1201", type: ChatType.TEXT, content: "다들 반가워333333", date: new Date() },
-        { authorId: "kwon._.gaon1201", type: ChatType.TEXT, content: "다들 반가워4444444", date: new Date() },
-        { authorId: "ParkUuM222", type: ChatType.TEXT, content: "채팅 테스트 채팅 테스트 채팅 테스트 채팅 테스트 채팅 테스트 채팅 테스트 채팅 테스트 채팅 테스트 채팅 테스트 채팅 테스트 채팅 테스트 채팅 테스트 채팅 테스트 채팅 테스트 채팅 테스트 ", date: new Date() },
+        Chat.createChatHistory({ 
+            authorId:"leechaeyoon1212",
+            content: "안녕"
+        }),
+        Chat.createChatHistory({ 
+            authorId:"kwon._.gaon1201",
+            content: "다들 반가워"
+        }),
+        Chat.createChatHistory({ 
+            authorId:"kwon._.gaon1201",
+            content: "다들 반가워22"
+        }),
+        Chat.createChatHistory({ 
+            authorId:"kwon._.gaon1201",
+            content: "다들 반가워333333"
+        }),
+        Chat.createChatHistory({ 
+            authorId:"kwon._.gaon1201",
+            content: "다들 반가워4444444"
+        }),
+        Chat.createChatHistory({ 
+            authorId:"ParkUuM222",
+            content: "채팅 테스트 채팅 테스트 채팅 테스트 채팅 테스트 채팅 테스트 채팅 테스트 채팅 테스트 채팅 테스트 채팅 테스트 채팅 테스트 채팅 테스트 채팅 테스트 채팅 테스트 채팅 테스트 채팅 테스트"
+        })
     ],
     typingUserList: [],
     chatRoomUserList: [],
     chatSaves: {},
     chatRoomList: [
-        { id: "2", title: "" },
-        { id: "3", title: "" },
-        { id: "4", title: "" },
-        { id: "5", title: "" },
-        { id: "6", title: "" },
-        { id: "7", title: "" },
-        { id: "8", title: "" },
-        { id: "9", title: "" },
-        { id: "10", title: "" },
-        { id: "12", title: "" },
-        { id: "13", title: "" },
-        { id: "14", title: "" },
-        { id: "15", title: "" },
-        { id: "16", title: "" },
-        { id: "17", title: "" },
-        { id: "18", title: "" },
-        { id: "19", title: "" },
-        { id: "20", title: "" },
-        { id: "21", title: "" },
-        { id: "22", title: "dddd" },
-        { id: "23", title: "그룹 채팅방 1" },
-        { id: "24", title: "그룹 채팅방 3" },
-        { id: "25", title: "그룹 채팅방 4" },
-        { id: "26", title: "그룹 채팅방 5 dddddddddddddddddd" },
+        { id: "2", title: "", users: ["parksaehyeon"] },
+        { id: "3", title: "", users: ["parksaehyeon"] },
+        { id: "4", title: "", users: ["parksaehyeon"] },
+        { id: "5", title: "", users: ["parksaehyeon"] },
+        { id: "6", title: "", users: ["parksaehyeon"] },
+        { id: "7", title: "", users: ["parksaehyeon"] },
+        { id: "8", title: "", users: ["parksaehyeon"] },
+        { id: "9", title: "", users: ["parksaehyeon"] },
+        { id: "10", title: "", users: ["parksaehyeon"] },
+        { id: "12", title: "", users: ["parksaehyeon"] },
+        { id: "13", title: "", users: ["parksaehyeon"] },
+        { id: "14", title: "", users: ["parksaehyeon"] },
+        { id: "15", title: "", users: ["parksaehyeon"] },
+        { id: "16", title: "", users: ["parksaehyeon"] },
+        { id: "17", title: "", users: ["parksaehyeon"] },
+        { id: "18", title: "", users: ["parksaehyeon"] },
+        { id: "19", title: "", users: ["parksaehyeon"] },
+        { id: "20", title: "", users: ["parksaehyeon","kwon._.gaon1201","hyungdodo"] },
+        { id: "21", title: "", users: ["parksaehyeon"] },
+        { id: "22", title: "dddd", users: ["parksaehyeon"] },
+        { id: "23", title: "그룹 채팅방 1", users: ["parksaehyeon"] },
+        { id: "24", title: "그룹 채팅방 3", users: ["parksaehyeon"] },
+        { id: "25", title: "그룹 채팅방 4", users: ["parksaehyeon"] },
+        { id: "26", title: "그룹 채팅방 5 dddddddddddddddddd", users: ["parksaehyeon"] },
     ]
 }
 
@@ -116,6 +135,24 @@ export const chatSlice = createSlice({
             state.typingUserList = state.typingUserList.filter(e => e !== action.payload);
         },
 
-        
+        addChat(state, action: PayloadAction<IChatHistory>) {
+            state.chatHistory.push(action.payload)
+        },
+
+        removeChat(state, action: PayloadAction<string>) {
+            state.chatHistory = state.chatHistory.filter(c => c.uuid !== action.payload);
+        },
+
+        editChat(state, action: PayloadAction<IChatHistory>) {
+            const chat = state.chatHistory.find(c => c.uuid === action.payload.uuid)
+
+            if(chat) {
+                chat.authorId     = action.payload.authorId
+                chat.content      = action.payload.content
+                chat.date         = action.payload.date
+                chat.lastEditDate = new Date()
+                chat.type         = action.payload.type
+            }
+        }
     }
 })
